@@ -2,14 +2,16 @@ from sqlalchemy import Column, Integer, String, Boolean
 from database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Book(Base):
+    __tablename__ = "books"
 
-    id = Column(Integer, primary_key=True)
-    username = Column(String(50))
-    password = Column(String(100))
-
-
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255))
+    author = Column(String(255))
+    category = Column(String(255))
+    cover = Column(String(500))
+    available = Column(Boolean, default=True)
+    
 class Book(Base):
     __tablename__ = "books"
 
