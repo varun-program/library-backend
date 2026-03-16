@@ -4,32 +4,24 @@ from database import engine
 from models import Base
 from routes import router
 
-app = FastAPI(
-    title="Library Management System API",
-    version="1.0"
-)
+app = FastAPI(title="Library Management API")
 
-# Create database tables automatically
+# create database tables
 Base.metadata.create_all(bind=engine)
 
-# CORS configuration
-origins = [
-    "*"
-]
-
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include API routes
+# routes
 app.include_router(router)
 
 
-# Root route for testing
 @app.get("/")
 def home():
-    return {"message": "Library Management API Running"}
+    return {"message": "Library Backend Running"}
