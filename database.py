@@ -1,14 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "mysql+pymysql://USERNAME:PASSWORD@HOST:PORT/DATABASE"
+DATABASE_URL = "mysql+pymysql://USER:PASSWORD@HOST:PORT/DATABASE"
 
 engine = create_engine(DATABASE_URL)
 
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
-)
+SessionLocal = sessionmaker(bind=engine)
 
 Base = declarative_base()
